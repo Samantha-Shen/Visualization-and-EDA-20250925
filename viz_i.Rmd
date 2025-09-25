@@ -11,14 +11,14 @@ library(ggridges)
 ```
 
 
-## Load the weather data
+# Load the weather data
 
 ```{r}
 library(p8105.datasets)
 data("weather_df")
 ```
 
-## Scatterplots!!
+# Scatterplots!!
 
 ```{r}
 ggplot(weather_df, aes(x=tmin, y=tmax)) +
@@ -154,5 +154,80 @@ weather_df %>%
   geom_density_2d()+
   geom_point()
 ```
+
+
+# Univariate plots
+
+### Histograms are really great.
+
+```{r}
+weather_df %>%
+  ggplot(aes(x=tmin))+
+  geom_histogram()
+```
+
+Can we add color..
+
+```{r}
+weather_df %>%
+  ggplot(aes(x=tmin, fill=name))+
+  geom_histogram(position = "dodge")+
+  facet_grid(.~name)
+```
+(position = "dodge"：让不同组别的条形并排显示，而不是堆叠在一起)
+(position = "stack"：（堆叠，默认值）)
+(position = "fill"（比例堆叠）)
+
+
+Let's try a new geometry!
+
+
+```{r}
+weather_df %>%
+  ggplot(aes(x=tmin, fill=name))+
+  geom_density(alpha=.3)
+```
+
+```{r}
+weather_df %>%
+  ggplot(aes(x=tmin, fill=name))+
+  geom_density(alpha=.4, adjust=.5)
+```
+(adjust 参数：调整密度估计的带宽（bandwidth）
+adjust = 1：使用默认带宽（标准平滑度）
+adjust < 1：减小带宽 → 曲线更崎岖、更多细节
+adjust > 1：增大带宽 → 曲线更平滑、更概化)
+
+
+### What about box plot?
+
+```{r}
+weather_df %>%
+  ggplot(aes(x=name, y=tmin))+
+  geom_boxplot()
+```
+
+### Trendy plots :-)
+
+```{r}
+weather_df %>%
+  ggplot(aes(x=name, y=tmin, fill=name)) +
+  geom_violin(alpha=.5)+
+stat_summary()
+```
+
+(stat_summary():统计汇总函数，在数据上自动计算并显示摘要统计量,默认计算每个 x 分组的 y 值的均值并用点表示)
+
+
+### Ridge plots --- most popular plot of 2017
+
+```{r}
+weather_df %>%
+  ggplot(aes(x=tmin, y=name))+
+  geom_density_ridges()
+```
+
+
+
 
 
