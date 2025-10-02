@@ -27,3 +27,35 @@ library(patchwork)
 library(p8105.datasets)
 data("weather_df")
 ```
+
+## Remember this plot…?
+
+``` r
+weather_df %>%
+  ggplot(aes(x=tmin,y=tmax, color=name)) +
+  geom_point(alpha = .5)
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz.ii_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+## Lables
+
+``` r
+weather_df %>%
+  ggplot(aes(x=tmin,y=tmax, color=name)) +
+  geom_point(alpha = .5) +
+  labs(
+    title = "Temperature plot",
+    x = "Minimum daily temperature (C)",
+    y = "Maximum daily temperature (C)",
+    caption = "Data from rnoaa package; temperature in 2021."
+  )
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz.ii_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
