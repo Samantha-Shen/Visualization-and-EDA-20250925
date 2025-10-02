@@ -1,0 +1,19 @@
+---
+title: "viz_ii"
+subtitle: "Part II"
+output: github_document
+date: "2025-09-30"
+---
+
+```{r setup}
+library(tidyverse)
+library(patchwork)
+```
+
+
+# Load the weather data
+
+```{r}
+library(p8105.datasets)
+data("weather_df")
+```
