@@ -167,4 +167,21 @@ scale_color_discrete = scale_color_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
 ```
 
+## Data args in `geom`
 
+```{r}
+central_park = 
+  weather_df %>%
+  filter(name == "CentralPark_NY")
+
+
+waterhole =
+  weather_df %>%
+  filter(name == "Waterhole_WA")
+
+ggplot(data = waterhole, aes(x = date, y = tmax, color =name))+
+  geom_point()+
+  geom_line(data = central_park)
+```
+
+  
