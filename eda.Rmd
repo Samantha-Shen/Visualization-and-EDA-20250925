@@ -48,5 +48,41 @@ weather_df %>%
 you can try `ungroup()`
 
 
+## counting things
+
+count month/name observations
+
+```{r}
+weather_df %>%
+  group_by(name, month) %>%
+  summarise(n_obs = n())
+```
+
+we can use `count()`
+
+```{r}
+weather_df %>%
+  count(name, month, name = "n_obs")
+```
+
+**NEVER** use base R's `table`
+
+```{r}
+weather_df %>%
+  pull(month) %>%
+  table()
+```
+
+
+other helpful counters
+
+```{r}
+weather_df %>%
+  group_by(month) %>%
+  summarise(
+    n_obs = n(),
+    n_days = n_distinct(date))
+```
+
 
 
