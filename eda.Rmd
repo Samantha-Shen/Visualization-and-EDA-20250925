@@ -1,0 +1,52 @@
+---
+title: "Exploratory analysis"
+output: github_document
+date: "2025-10-02"
+---
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+
+knitr::opts_chunk$set(
+  fig.width = 6,
+  fig.asp = .6,
+  out.width = "90%"
+)
+
+theme_set(theme_minimal()+theme(legend.position = "bottom"))
+
+options(
+  ggplot2.continuous.color = "viridis",
+   ggplot2.continuous.fill = "viridis"
+)
+
+scale_color_discrete = scale_color_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+```
+
+
+# Load the weather data
+
+```{r}
+library(p8105.datasets)
+data("weather_df")
+weather_df = 
+  weather_df |>
+  mutate(
+    month = lubridate::floor_date(date, unit = "month"))
+weather_df
+```
+
+
+## `group_by`
+
+```{r}
+weather_df %>%
+  group_by(name, month)
+```
+you can try `ungroup()`
+
+
+
+
