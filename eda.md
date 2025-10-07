@@ -383,3 +383,7 @@ weather_df %>%
     ## 3 Waterhole_WA              11.1           3.04
 
 `lag()`:时间上回看一个单位
+
+## Quick notes
+
+summarize only get you so far.

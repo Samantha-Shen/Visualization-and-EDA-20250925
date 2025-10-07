@@ -208,9 +208,9 @@ weather_df %>%
 `lag()`:时间上回看一个单位
 
 
+## Quick notes
 
-
-
+summarize only get you so far.
 
 
 
